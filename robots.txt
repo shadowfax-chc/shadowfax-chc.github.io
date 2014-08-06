@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://shadowfax-chc.github.io/sitemap.xml 
