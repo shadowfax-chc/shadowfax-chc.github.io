@@ -305,6 +305,20 @@ task :set_root_dir, :dir do |t, args|
   end
 end
 
+desc "Set up _deploy folder and deploy branch"
+task :resetup_github_pages do |t, args|
+  rm_rf deploy_dir
+  mkdir deploy_dir
+  repo_url = 'git@github.com:shadowfax-chc/shadowfax-chc.github.io.git'
+  cd "#{deploy_dir}" do
+    system "git init"
+    system "git remote add origin #{repo_url}"
+    system "git pull origin master"
+    system " git branch --set-upstream-to=origin/master master"
+  end
+  puts "\n---\n## Now you can deploy to #{repo_url} with `rake deploy` ##"
+end
+
 desc "Set up _deploy folder and deploy branch for Github Pages deployment"
 task :setup_github_pages, :repo do |t, args|
   if args.repo
