@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[:wqa]]></title>
   <link href="http://shadowfax-chc.github.io/atom.xml" rel="self"/>
   <link href="http://shadowfax-chc.github.io/"/>
-  <updated>2014-08-06T00:00:23-04:00</updated>
+  <updated>2014-08-06T00:28:57-04:00</updated>
   <id>http://shadowfax-chc.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Timothy Messier]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
