@@ -21,6 +21,13 @@ to go with [Ubuntu minimal] with [i3], while others have followed me down the
 joyous path of [Gentoo] and [spectrwm]. Either way everyone took the
 opportunity to examine my dotfiles and grab the parts they liked.
 
+At this point I have read through my own dotfiles several times as I explained
+the purpose of each file (I also took this opportunity to clean up some bad
+practices), thus it seems like a first post to dive into some of my dots and
+explain them. For the Unix aficionado much of this may be obvious, for those
+new to Linux or working on the terminal there should be many useful tips.
+Hopefully there is some value for everyone.
+
 
 [spectrwm]: https://opensource.conformal.com/wiki/spectrwm
 [Ubuntu minimal]: https://help.ubuntu.com/community/Installation/MinimalCD
