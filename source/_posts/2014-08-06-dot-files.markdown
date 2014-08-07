@@ -6,3 +6,10 @@ comments: true
 categories: 
 published: false
 ---
+
+Dotfiles fascinate me. I enjoy stumbling across a developer's github and taking
+a look into their dotfiles. Its a great way to discover useful aliases or
+functions. Even new tools can be discovered when I see a previously unknown
+dotfile. Each dotfile repo also contains a living bio of the developer. One can
+easily learn what OS the developer uses, what programing languages they use the
+most, what tools they prefer.
