@@ -4,7 +4,7 @@ title: "Dot files"
 date: 2014-08-06 09:56:03 -0400
 comments: true
 categories: 
-published: false
+published: true
 ---
 
 Dotfiles fascinate me. I enjoy stumbling across a developer's github and taking
@@ -13,3 +13,16 @@ functions. Even new tools can be discovered when I see a previously unknown
 dotfile. Each dotfile repo also contains a living bio of the developer. One can
 easily learn what OS the developer uses, what programing languages they use the
 most, what tools they prefer.
+
+Recently many of my co-workers switched from a development environment of
+`Windows + Putty + Linux Server` to running Linux locally. The big draw for
+them was seeing me using [spectrwm], a tiling window manager. Some have decided
+to go with [Ubuntu minimal] with [i3], while others have followed me down the
+joyous path of [Gentoo] and [spectrwm]. Either way everyone took the
+opportunity to examine my dotfiles and grab the parts they liked.
+
+
+[spectrwm]: https://opensource.conformal.com/wiki/spectrwm
+[Ubuntu minimal]: https://help.ubuntu.com/community/Installation/MinimalCD
+[i3]: http://i3wm.org/
+[Gentoo]: https://www.gentoo.org/
