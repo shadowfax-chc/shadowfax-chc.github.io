@@ -74,9 +74,57 @@ conditional checking the `$pretend` variable. This is used throughout the
 script to only print what it will do rather than doing if the `--pretend` arg
 is passed in.
 
+The install script also installs the ever useful [bash-git-prompt] for
+displaying the repo status in the prompt, [vundle] for managing vim plugins,
+and [rvm] for ruby.
+
+The terminfo section manages installing or removing a terminfo for
+[rxvt-unicode] aka urxvt.
+
+``` bash Terminfo
+# Terminfo if needed
+if [[ -f /usr/share/terminfo/r/rxvt-unicode ]] && [[ -f /usr/share/terminfo/r/rxvt-unicode-256color ]]; then
+    # No need for local terminfo, lets use the system one
+    if [[ -d "$HOME/.terminfo" ]]; then
+        if [[ $pretend -eq 1 ]]; then
+            echo "Would remove $HOME/.terminfo"
+        else
+            echo "Remove $HOME/.terminfo"
+            rm -rf "$HOME/.terminfo"
+        fi
+    fi
+else
+    dot="terminfo"
+    target="$HOME/.$dot"
+    if [[ $pretend -eq 1 ]]; then
+        echo "Would set $dot"
+    else
+        # Make a .bak of a file or dir
+        if [[ ! -h $target ]]; then
+            if [[ -d $target ]] || [[ -f $target ]]; then
+                mv $target $target.bak
+            fi
+        fi
+
+        echo "Setting $dot"
+        ln -sf "$PWD/$dot" "$target"
+    fi
+fi
+```
+
+Terminfo is used to make a terminal functional.  Without it a terminal will not
+display correctly and keys like `End` or `Home` will not work correctly. I use
+urxvt for my terminal emulator. I also ssh into many linux servers. Often these
+servers will not have the terminfo for urxvt.  This section installs the urxvt
+terminfo into `.terminfo` if it is not installed on the system. It will also
+remove `.terminfo` if it is globally available.
 
 
 [spectrwm]: https://opensource.conformal.com/wiki/spectrwm
 [Ubuntu minimal]: https://help.ubuntu.com/community/Installation/MinimalCD
 [i3]: http://i3wm.org/
 [Gentoo]: https://www.gentoo.org/
+[bash-git-prompt]: https://github.com/magicmonty/bash-git-prompt
+[vundle]: https://github.com/gmarik/vundle
+[rvm]: http://rvm.io/
+[rxvt-unicode]: http://software.schmorp.de/pkg/rxvt-unicode.html
