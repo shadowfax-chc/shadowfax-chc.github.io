@@ -28,6 +28,53 @@ explain them. For the Unix aficionado much of this may be obvious, for those
 new to Linux or working on the terminal there should be many useful tips.
 Hopefully there is some value for everyone.
 
+The Install
+-----------
+
+Installing the dotfiles is obviously important. The install script should be in
+a language that is already installed on the system. I use bash for my install
+script as it is rare to find a Linux system without it. A ruby rakefile seems
+to be a common choice, which makes sense for ruby/rails developers as they
+would never be without ruby.
+
+The top of the bash script deals with providing help and parsing some optional
+arguments. The core of the bash script involves setting symlinks between the
+files to a dot version in my home directory.
+
+``` bash Core symlink creation
+pushd $(dirname $0) &> /dev/null
+
+for dot in $(ls); do
+    if [[ ! $dot == "README.rst" ]] && [[ ! $dot == "install.sh" ]] && [[ ! $dot == "terminfo" ]]; then
+        target="$HOME/.$dot"
+
+        if [[ $pretend -eq 1 ]]; then
+            echo "Would set $dot"
+        else
+            # Make a .bak of a file or dir
+            if [[ ! -h $target ]]; then
+                if [[ -d $target ]] || [[ -f $target ]]; then
+                    mv $target $target.bak
+                fi
+            fi
+
+            echo "Setting $dot"
+            ln -sf "$PWD/$dot" "$target"
+        fi
+    fi
+done
+```
+
+This section first changes directory to the location of the install script.
+Then loops over each file in the directory. If the file isn't the `README.rst`,
+the `install.sh` itself, or the `terminfo` directory (more on that last one
+later) then a symlink will be created. But first it checks if there already is
+a non-symlink file in place, and makes a backup of it first. Also note the
+conditional checking the `$pretend` variable. This is used throughout the
+script to only print what it will do rather than doing if the `--pretend` arg
+is passed in.
+
+
 
 [spectrwm]: https://opensource.conformal.com/wiki/spectrwm
 [Ubuntu minimal]: https://help.ubuntu.com/community/Installation/MinimalCD
